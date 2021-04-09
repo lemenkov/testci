@@ -7,6 +7,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
+    #tags:
+    #     - 'test-*'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,3 +33,16 @@ jobs:
             sudo apt install equivs
             #sudo mk-build-deps --install
             #make deb
+            touch package.1
+            touch package.2
+      # https://github.com/marketplace/actions/upload-files-to-a-github-release
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file_glob: true
+          file: mything.*
+          asset_name:package.*
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "This is my release text"
