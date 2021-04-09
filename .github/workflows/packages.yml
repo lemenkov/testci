@@ -13,10 +13,16 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
+    strategy:
+      matrix:
+        os:
+          - runs-on: ubuntu-20.04
+          - runs-on: ubuntu-18.04
+    runs-on: ${{ matrix.os.runs-on }}
+  # This workflow contains a single job called "build"
     # The type of runner that the job will run on
-    runs-on: [ubuntu-16.04, ubuntu-20.04]
+    #runs-on: [ubuntu-16.04, ubuntu-20.04]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
