@@ -31,10 +31,10 @@ jobs:
         run: |
             sudo apt install devscripts
             sudo apt install equivs
-            #sudo mk-build-deps --install
-            #make deb
             touch package.1
             touch package.2
+            #sudo mk-build-deps --install
+            #make deb
       # https://github.com/marketplace/actions/upload-files-to-a-github-release
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
