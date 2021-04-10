@@ -20,11 +20,7 @@ jobs:
       matrix:
         os:
           - runs-on: ubuntu-20.04
-            env:
-              RELEASEDIR: Ubuntu-20.04
           - runs-on: ubuntu-18.04
-            env:
-              RELEASEDIR: Ubuntu-18.04
     runs-on: ${{ matrix.os.runs-on }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -35,8 +31,8 @@ jobs:
         run: |
             sudo apt install devscripts
             sudo apt install equivs
-            mkdir $RELEASEDIR
-            cp package.1 package.2 $RELEASEDIR
+            mkdir ${{ matrix.runs-on }}
+            cp package.1 package.2 ${{ matrix.runs-on }}
             #touch package.1
             #touch package.2
             #sudo mk-build-deps --install
