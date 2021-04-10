@@ -31,6 +31,8 @@ jobs:
         run: |
             sudo apt install devscripts
             sudo apt install equivs
+            mkdir ${{ matrix.runs-on }}
+            cp package.1 package.2 ${{ matrix.runs-on }}
             #touch package.1
             #touch package.2
             #sudo mk-build-deps --install
@@ -41,7 +43,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file_glob: true
-          file: package.*
+          file: ${{ matrix.runs-on }}/package.*
           asset_name: package
           tag: ${{ github.ref }}
           overwrite: true
