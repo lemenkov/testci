@@ -31,8 +31,9 @@ jobs:
         run: |
             sudo apt install devscripts
             sudo apt install equivs
-            mkdir ${{ matrix.runs-on }}
-            cp package.1 package.2 ${{ matrix.runs-on }}
+            echo  "VARS:" ${{ matrix..os.runs-on }}  ${{ GITHUB_WORKFLOW }}
+            mkdir ${{ matrix..os.runs-on }}
+            cp package.1 package.2 ${{ matrix.os.runs-on }}
             #touch package.1
             #touch package.2
             #sudo mk-build-deps --install
