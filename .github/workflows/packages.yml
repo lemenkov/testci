@@ -29,8 +29,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Build packages
         run: |
-            sudo apt install devscripts
-            sudo apt install equivs
+            echo sudo apt install devscripts
+            echo sudo apt install equivs
             echo  "VARS:" ${{ matrix..os.runs-on }}  ${{ GITHUB_WORKFLOW }}
             mkdir ${{ matrix..os.runs-on }}
             cp package.1 package.2 ${{ matrix.os.runs-on }}
