@@ -31,8 +31,8 @@ jobs:
         run: |
             sudo apt install devscripts
             sudo apt install equivs
-            touch package.1
-            touch package.2
+            #touch package.1
+            #touch package.2
             #sudo mk-build-deps --install
             #make deb
       # https://github.com/marketplace/actions/upload-files-to-a-github-release
